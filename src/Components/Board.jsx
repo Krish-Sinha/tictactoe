@@ -6,6 +6,8 @@ const Board = () => {
   const [board,setBoard]=useState(Array(9).fill(null));
   const [isXNext,setXNext]=useState(false);
 
+  console.log('board rerender');
+
 
   const handleSquareClick=(position)=>{
     if(board[position]){
