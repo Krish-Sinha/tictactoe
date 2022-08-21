@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Board from './Components/Board';
+import History from './Components/History';
 import { calculateWinner } from './helpers';
 import "./styles/root.scss"
 
@@ -9,8 +10,6 @@ const App=() =>{
 
   const [currentMove, setCurrentMove]=useState(0);
   const current=history[currentMove];
-
-  console.log('history', history);
 
   const winner=calculateWinner(current.board);
 
@@ -22,7 +21,7 @@ const App=() =>{
 
   console.log('board rerender');
 
-
+ 
   const handleSquareClick= position => {
     if(current.board[position] || winner){
       return;
@@ -46,11 +45,16 @@ const App=() =>{
 
   };
 
+  const moveTo=()=>{
+    setCurrentMove(moveTo); 
+  }
+
   return(
     <div className="app">
     <h1>TIC TAC TOE</h1>
     <h2>{ message}</h2>
     <Board board={current.board} handleSquareClick={handleSquareClick}/>
+    <History history={history} moveTo={moveTo} currentMove={currentMove} />
   </div>
   );
 };
